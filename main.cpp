@@ -57,6 +57,7 @@ void islem (int a){
 			break;
 		case 2:
 			//SMB Paylaşımları
+			enumIslem();
 			break;
 		case 3:
 			//SMB üzerinden İşletim Sistemi Kontrolleri
@@ -71,3 +72,15 @@ void islem (int a){
 	
 }
 
+void enumIslem(){
+	
+	string enumHedefIP;
+	cout<<"Hedef IP'yi girin:  ";
+	cin>>enumHedefIP;
+	string komutEnum4Linux_S = "enum4linux " + enumHedefIP;
+	int enumSayi = komutEnum4Linux_S.length();
+	char komutEnum4Linux_C[enumSayi + 1];
+	strcpy(komutEnum4Linux_C, komutEnum4Linux_S.c_str());
+	system(komutEnum4Linux_C);
+	
+}
