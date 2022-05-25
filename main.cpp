@@ -7,6 +7,8 @@ using namespace std;
 void islem(int);
 void program();
 void cikisKontrol(int);
+void enumIslem();
+void smbIslem();
 
 
 int main(){
@@ -61,6 +63,7 @@ void islem (int a){
 			break;
 		case 3:
 			//SMB üzerinden İşletim Sistemi Kontrolleri
+			smbIslem();
 			break;
 		case 4:
 			//SNMP Bulk DOS Saldırısı
@@ -82,5 +85,18 @@ void enumIslem(){
 	char komutEnum4Linux_C[enumSayi + 1];
 	strcpy(komutEnum4Linux_C, komutEnum4Linux_S.c_str());
 	system(komutEnum4Linux_C);
+	
+}
+
+void smbIslem(){
+	
+	string smbHedefIP;
+	cout<<"Hedef IP'yi girin:  ";
+	cin>>smbHedefIP;
+	string komutSmb_S = "xterm -hold -e crackmapexec smb " + smbHedefIP;
+	int smbSayi = komutSmb_S.length();
+	char komutSmb_C[smbSayi + 1];
+	strcpy(komutSmb_C, komutSmb_S.c_str());
+	system(komutSmb_C);
 	
 }
