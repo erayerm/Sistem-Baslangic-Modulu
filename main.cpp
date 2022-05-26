@@ -113,7 +113,7 @@ void snmpIslem(){
 	string snmpHedefIP;
 	cout<<"Hedef IP'yi girin:  ";
 	cin>>snmpHedefIP;
-	string komutSnmp_S = "snmpbulkget -v2c -0s -c public " + snmpHedefIP + " 100";
+	string komutSnmp_S = "snmpbulkget -v2c -Os -c public " + snmpHedefIP + " -Cr10000";
 	int snmpSayi = komutSnmp_S.length();
 	char komutSnmp_C[snmpSayi + 1];
 	strcpy(komutSnmp_C, komutSnmp_S.c_str());
