@@ -26,7 +26,7 @@ void program(){
 	cout<<"Opsiyon 3 : SMB üzerinden İşletim Sistemi Kontrolleri"<< endl;
 	cout<<"Opsiyon 4 : SNMP Bulk DOS Saldırısı"<< endl;
 	cout<<"Opsiyon 5 : Siemens S7-1200 DoS Saldırısı"<< endl;
-	cout<<"Seçiminizi girin (1-4):  ";
+	cout<<"Seçiminizi girin (1-5):  ";
 	int secim;
 	cin>>secim;
 	islem(secim);
